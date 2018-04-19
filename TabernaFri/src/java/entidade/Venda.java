@@ -12,16 +12,16 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Beccon
  */
 
+//ManyToOne
 @Entity
 @XmlRootElement
-public class Produto implements Serializable {
+public class Venda implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nome, descricao, tipo, fabricante;
-    private float preco;
+    private String nome, descricao, uso;
 
     public Long getId() {
         return id;
@@ -58,10 +58,10 @@ public class Produto implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Produto)) {
+        if (!(object instanceof Venda)) {
             return false;
         }
-        Produto other = (Produto) object;
+        Venda other = (Venda) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -70,7 +70,7 @@ public class Produto implements Serializable {
 
     @Override
     public String toString() {
-        return "entidade.Produto[ id=" + id + " ]";
+        return "entidade.Venda[ id=" + id + " ]";
     }
     
 }
