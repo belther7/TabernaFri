@@ -30,7 +30,7 @@ import rn.EventoRN;
  *
  * @author anatoliandrei
  */
-@Path("ws3")
+@Path("evento")
 public class EventoWS {
     
     private EventoRN eventoRN;
@@ -46,6 +46,7 @@ public class EventoWS {
     }
     
     @GET
+    @Path("/listar")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Evento> getListaEventos() {
         return eventoRN.listar();

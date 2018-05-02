@@ -30,7 +30,7 @@ import rn.ClienteRN;
  *
  * @author anatoliandrei
  */
-@Path("ws2")
+@Path("cliente")
 public class ClienteWS {
 
    private ClienteRN clienteRN;
@@ -45,6 +45,7 @@ public class ClienteWS {
     }
 
     @GET
+    @Path("/listar")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Cliente> getListaCliente() {
         return clienteRN.listar();
@@ -65,6 +66,7 @@ public class ClienteWS {
     //@POST // para inserir
     
     @POST
+    @Path("/inserir")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Cliente insereCliente(Cliente cliente, @Context HttpServletResponse response) {

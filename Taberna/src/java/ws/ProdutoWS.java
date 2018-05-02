@@ -25,7 +25,7 @@ import rn.ProdutoRN;
  *
  * @author anatoliandrei
  */
-@Path("ws")
+@Path("produto")
 public class ProdutoWS {
 
     private ProdutoRN produtoRN;
@@ -40,6 +40,7 @@ public class ProdutoWS {
     }
 
     @GET
+    @Path("/listar")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Produto> getListaProdutos() {
         return produtoRN.listar();
