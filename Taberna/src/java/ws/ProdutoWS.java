@@ -81,11 +81,7 @@ public class ProdutoWS {
     public Produto insereProduto(Produto produto, @Context HttpServletResponse response) {
         Produto produtoGerado = produtoRN.inserir(produto);
         response.setStatus(HttpServletResponse.SC_ACCEPTED);
-        try {
-            response.flushBuffer();
-        } catch (IOException ex) {
-            throw new InternalServerErrorException();
-        }
+
         return produtoGerado;
     }
 
