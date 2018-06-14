@@ -14,6 +14,7 @@ import util.JPAUtil;
 /**
  *
  * @author anatoliandrei
+ * @author lucasbeccon
  */
 public class ClienteRN {
 

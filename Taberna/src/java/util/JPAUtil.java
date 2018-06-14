@@ -12,6 +12,7 @@ import javax.persistence.Persistence;
 /**
  *
  * @author anatoliandrei
+ * @author lucasbeccon
  */
 public class JPAUtil {
     private static String PUNAME = "TabernaPU";

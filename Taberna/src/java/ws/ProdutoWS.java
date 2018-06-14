@@ -24,6 +24,7 @@ import rn.ProdutoRN;
  * REST Web Service
  *
  * @author anatoliandrei
+ * @author lucasbeccon
  */
 @Path("produto")
 public class ProdutoWS {

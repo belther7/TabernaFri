@@ -18,6 +18,7 @@ import java.util.Collection;
 /**
  *
  * @author anatoliandrei
+ * @author lucasbeccon
  */
 @XmlRootElement
 @Entity

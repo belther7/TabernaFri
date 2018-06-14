@@ -29,6 +29,7 @@ import rn.ClienteRN;
  * REST Web Service
  *
  * @author anatoliandrei
+ * @author lucasbeccon
  */
 @Path("cliente")
 public class ClienteWS {

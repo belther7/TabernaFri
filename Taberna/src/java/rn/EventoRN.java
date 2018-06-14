@@ -14,6 +14,7 @@ import entidade.Evento;
 /**
  *
  * @author anatoliandrei
+ * @author lucasbeccon
  */
 public class EventoRN {
 

@@ -29,6 +29,7 @@ import rn.EventoRN;
  * REST Web Service
  *
  * @author anatoliandrei
+ * @author lucasbeccon
  */
 @Path("evento")
 public class EventoWS {
