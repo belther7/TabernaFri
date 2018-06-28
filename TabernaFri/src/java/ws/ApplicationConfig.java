@@ -19,8 +19,6 @@ public class ApplicationConfig extends Application {
     }
     
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(ws.ClienteWS.class);
-        resources.add(ws.EventoWS.class);
         resources.add(ws.ProdutoWS.class);
     }
 }
