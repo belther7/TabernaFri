@@ -6,6 +6,7 @@
 <meta name="description" content="A Taberna Fri é uma loja de produtos eróticos e afrodisíacos">
 <meta name="author" content="Anatoli Andrei Olgin | Lucas Mendes Beccon">
 <link href="TabernaEstilos/geral.css" rel="stylesheet" type="text/css" media="all">
+<link href="TabernaEstilos/lprodutos.css" rel="stylesheet" type="text/css" media="all">
 </head>
 <body id="index">
 <div id="tudo">
@@ -32,21 +33,45 @@
 </div> <!-- Fim da div#topo -->
 
 <div id="principal">
-<h2>Sua Sex Shop<br> Totalmente Web</h2>
-	<p>Taberna é líder no mercado brasileiro de online sex shops.</p>
-<h2>Ampla gama de produtos e<br>variedades</h2>
-	<p>De itens de vestiário a vibradores e cosméticos. Na Taberna você encontra de tudo para apimentar a sua rotina.</p>
-	<a href="produtos.html"> conheça nossa linha completa de produtos</a>
+
+
+<form name="cadastraEve" method="post" id="formulario">
+    <div class="box"> 
+        <h1>Cadastro de Evento:</h1>
+  
+        <label> 
+        <br><br>
+            <span>Nome do ministrante: </span>
+            <input type="text" class="input_text" name="nome" id="txtnome"/>
+  
+        </label>
+  
+        <label>   
+        	<span>Descrição: </span>
+            <textarea class="message" name="descricao" id="txtdescricao"></textarea>
+         </label>
+  
+        
+         <label>
+        	<input type="submit" class="button" id="btnsalvar" value="Enviar" />  
+                <input type="submit" class="button" id="btnatualizar" value="Atualizar" />  
+        </label>         
+    </div>
+</form> 
+
+
+
 </div> <!-- Fim da div#principal -->
-	
-<div id="auxiliar">
-	<img src="TabernaEstilos/modelo1.jpg" alt="imagem de uma modelo" width=350 height=317>
-</div> <!-- Fim da div#auxiliar -->
-	
+		
+		
 <div id="rodape">
 	<p>Copyright © 2018 - <b>Taberna</b> <span>Fri</span></p>
 </div> <!-- Fim da div#rodape -->
 
 </div> <!-- Fim da div#tudo -->
-
+        <script src="js/dominio/Evento.js"></script>
+        <script src="js/service/EventoHttpService.js"></script>
+        <script src="js/view/EventoView.js"></script>
+        <script src="js/controller/EventoController.js"></script>
+        <script src="js/app.js"></script>
 </body></html>

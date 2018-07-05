@@ -41,7 +41,6 @@ public class ProdutoWS {
     }
 
     @GET
-    @Path("/listar")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Produto> getListaProdutos() {
         return produtoRN.listar();

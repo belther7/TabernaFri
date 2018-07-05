@@ -47,7 +47,6 @@ public class EventoWS {
     }
     
     @GET
-    @Path("/listar")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Evento> getListaEventos() {
         return eventoRN.listar();

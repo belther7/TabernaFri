@@ -45,12 +45,16 @@ public class ClienteWS {
         clienteRN = new ClienteRN();
     }
 
+    //ok
+    
     @GET
-    @Path("/listar")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Cliente> getListaCliente() {
         return clienteRN.listar();
     }
+    
+    
+    //ok
     
     //@GET //para buscar o objeto pelo id
     @GET
@@ -67,7 +71,6 @@ public class ClienteWS {
     //@POST // para inserir
     
     @POST
-    @Path("/inserir")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Cliente insereCliente(Cliente cliente, @Context HttpServletResponse response) {
@@ -88,8 +91,8 @@ public class ClienteWS {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Cliente atualizaCliente(@PathParam("id") Long id, Cliente cliente) {
-        Cliente clienteGerado;
 
+        Cliente clienteGerado;
         try {
             clienteGerado = clienteRN.atualizar(id, cliente);
         } catch (Exception ex) {
