@@ -1,6 +1,6 @@
 package ws;
 
-import entidade.Produto;
+import entidade.Cliente;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +17,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
-import rn.ProdutoRN;
+import rn.ClienteRN;
 
 /**
  * REST Web Service
@@ -25,78 +25,83 @@ import rn.ProdutoRN;
  * @author anatoliandrei
  * @author lucasbeccon
  */
-@Path("produto")
-public class ProdutoWS {
+@Path("cliente")
+public class ClienteWS {
 
-    private ProdutoRN produtoRN;
+   private ClienteRN clienteRN;
     @Context
     private UriInfo context;
 
-    public ProdutoWS() {
-        produtoRN = new ProdutoRN();
+    public ClienteWS() {
+        clienteRN = new ClienteRN();
     }
 
     @GET
     @Path("/listar")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Produto> getListaProdutos() {
-        return produtoRN.listar();
+    public List<Cliente> getListaCliente() {
+        return clienteRN.listar();
     }
-
+    
     //@GET //para buscar o objeto pelo id
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Produto getProdutoPorId(@PathParam("id") Long id) {
-        Produto produto = produtoRN.buscarPorId(id);
-        if (produto == null) {
+    public Cliente getClientePorId(@PathParam("id") Long id) {
+        Cliente cliente = clienteRN.buscarPorId(id);
+        if (cliente == null) {
             throw new NotFoundException();
         }
-        return produto;
+        return cliente;
     }
-       
+    
+    //@POST // para inserir
+    
     @POST
+    @Path("/inserir")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Produto insereProduto(Produto produto, @Context HttpServletResponse response) {
-        Produto produtoGerado = produtoRN.inserir(produto);
+    public Cliente insereCliente(Cliente cliente, @Context HttpServletResponse response) {
+        Cliente clienteGerado = clienteRN.inserir(cliente);
         response.setStatus(HttpServletResponse.SC_ACCEPTED);
         try {
             response.flushBuffer();
         } catch (IOException ex) {
             throw new InternalServerErrorException();
         }
-        return produtoGerado;
+        return clienteGerado;
     }
 
     //@PUT - atualizar
+    
     @PUT
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Produto atualizaProduto(@PathParam("id") Long id, Produto produto) {
-        Produto produtoGerado;
+    public Cliente atualizaCliente(@PathParam("id") Long id, Cliente cliente) {
+        Cliente clienteGerado;
 
         try {
-            produtoGerado = produtoRN.atualizar(id, produto);
+            clienteGerado = clienteRN.atualizar(id, cliente);
         } catch (Exception ex) {
             throw new NotFoundException();
         }
 
-        return produtoGerado;
+        return clienteGerado;
     }
-
+    
     //@DELETE - remover
+    
     @DELETE
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Produto removeProduto(@PathParam("id") Long id) {
-        Produto produto = null;
+    public Cliente removeCliente(@PathParam("id") Long id) {
+        Cliente cliente = null;
         try {
-            produto = produtoRN.deletar(id);
+            cliente = clienteRN.deletar(id);
         } catch (Exception ex) {
             throw new NotFoundException();
         }
-        return produto;
+        return cliente;
     }
 }

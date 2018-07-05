@@ -1,6 +1,6 @@
 package ws;
 
-import entidade.Produto;
+import entidade.Evento;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +17,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
-import rn.ProdutoRN;
+import rn.EventoRN;
 
 /**
  * REST Web Service
@@ -25,48 +25,49 @@ import rn.ProdutoRN;
  * @author anatoliandrei
  * @author lucasbeccon
  */
-@Path("produto")
-public class ProdutoWS {
+@Path("evento")
+public class EventoWS {
+    
+    private EventoRN eventoRN;
 
-    private ProdutoRN produtoRN;
     @Context
     private UriInfo context;
 
-    public ProdutoWS() {
-        produtoRN = new ProdutoRN();
+    public EventoWS() {
+        eventoRN = new EventoRN();
     }
-
+    
     @GET
     @Path("/listar")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Produto> getListaProdutos() {
-        return produtoRN.listar();
+    public List<Evento> getListaEventos() {
+        return eventoRN.listar();
     }
 
     //@GET //para buscar o objeto pelo id
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Produto getProdutoPorId(@PathParam("id") Long id) {
-        Produto produto = produtoRN.buscarPorId(id);
-        if (produto == null) {
+    public Evento getEventoPorId(@PathParam("id") Long id) {
+        Evento evento = eventoRN.buscarPorId(id);
+        if (evento == null) {
             throw new NotFoundException();
         }
-        return produto;
+        return evento;
     }
-       
+    
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Produto insereProduto(Produto produto, @Context HttpServletResponse response) {
-        Produto produtoGerado = produtoRN.inserir(produto);
+    public Evento insereEvento(Evento evento, @Context HttpServletResponse response) {
+        Evento eventoGerado = eventoRN.inserir(evento);
         response.setStatus(HttpServletResponse.SC_ACCEPTED);
         try {
             response.flushBuffer();
         } catch (IOException ex) {
             throw new InternalServerErrorException();
         }
-        return produtoGerado;
+        return eventoGerado;
     }
 
     //@PUT - atualizar
@@ -74,29 +75,29 @@ public class ProdutoWS {
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Produto atualizaProduto(@PathParam("id") Long id, Produto produto) {
-        Produto produtoGerado;
+    public Evento atualizaEvento(@PathParam("id") Long id, Evento evento) {
+        Evento eventoGerado;
 
         try {
-            produtoGerado = produtoRN.atualizar(id, produto);
+            eventoGerado = eventoRN.atualizar(id, evento);
         } catch (Exception ex) {
             throw new NotFoundException();
         }
 
-        return produtoGerado;
+        return eventoGerado;
     }
 
     //@DELETE - remover
     @DELETE
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Produto removeProduto(@PathParam("id") Long id) {
-        Produto produto = null;
+    public Evento removeProduto(@PathParam("id") Long id) {
+        Evento evento = null;
         try {
-            produto = produtoRN.deletar(id);
+            evento = eventoRN.deletar(id);
         } catch (Exception ex) {
             throw new NotFoundException();
         }
-        return produto;
+        return evento;
     }
 }

@@ -10,7 +10,7 @@ import javax.persistence.Persistence;
  * @author lucasbeccon
  */
 public class JPAUtil {
-    private static String PUNAME = "TabernafriPU";
+    private static String PUNAME = "TabernaPU";
     private static EntityManagerFactory factory = 
             Persistence.createEntityManagerFactory(PUNAME);
    
